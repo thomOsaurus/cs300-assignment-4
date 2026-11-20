@@ -7,6 +7,10 @@ import BookForm from "./BookForm";
 export default function App() {
 //Main application for the Reading Tracker  
   const [books, setBooks] = useState(startingBooks);
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   function addBook(newBook) {
     const book = {
       ...newBook,
@@ -14,11 +18,26 @@ export default function App() {
     };
     setBooks((prevBooks) => [...prevBooks, book]);
   }
+    function removeBook(bookId) {
+    setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
+  }
   return (
     <main>
       <Header />
-     <BookForm onAddBook={addBook} />
-      <BookList books={books} />  
+    <BookForm onAddBook={addBook} />
+
+    <div style={{ marginTop: "25px" }}>
+    <input
+        type="text"
+        placeholder="Search by title"
+        aria-label="Search books by title"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />  
+      </div>
+
+    <BookList books={filteredBooks} onRemoveBook={removeBook} />  
     </main>
   );
+
 }
