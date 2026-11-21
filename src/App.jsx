@@ -4,6 +4,7 @@ import { useState } from "react";
 import startingBooks from "../data/books.json";
 import BookList from "./BookList";
 import BookForm from "./BookForm";
+import SearchBar from "./SearchBar";
 export default function App() {
 //Main application for the Reading Tracker  
   const [books, setBooks] = useState(startingBooks);
@@ -26,17 +27,13 @@ export default function App() {
       <Header />
     <BookForm onAddBook={addBook} />
 
-    <div style={{ marginTop: "25px" }}>
-    <input
-        type="text"
-        placeholder="Search by title"
-        aria-label="Search books by title"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+    <SearchBar
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
       />  
-      </div>
 
-    <BookList books={filteredBooks} onRemoveBook={removeBook} />  
+    <BookList books={filteredBooks}
+     onRemoveBook={removeBook} />  
     </main>
   );
 
