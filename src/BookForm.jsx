@@ -31,14 +31,17 @@ function handleSubmit(event) {
         <form onSubmit={handleSubmit} noValidate>
             <h2>Add a Book</h2>
 
-            <label htmlFor="book-title">Title:</label>
+           <div>
+             <label htmlFor="book-title">Title:</label>
             <input
                 id="book-title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
+            
             {errors.title && <p className="error">{errors.title}</p>}
-
+          </div>
+          <div>
             <label htmlFor="book-creator">Creator:</label>
             <input
                 id="book-creator"   
@@ -46,7 +49,7 @@ function handleSubmit(event) {
                 onChange={(e) => setCreator(e.target.value)}
             />
             {errors.creator && <p className="error">{errors.creator}</p>}   
-
+          </div>
             <button type="submit">Add Book</button>
         </form>
     );
