@@ -35,20 +35,24 @@ function handleSubmit(event) {
              <label htmlFor="book-title">Title:</label>
             <input
                 id="book-title"
+                aria-describedby={errors.title ? "title-error" : undefined}
+                aria-invalid={!!errors.title}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
             
-            {errors.title && <p className="error">{errors.title}</p>}
+            {errors.title && <p id="title-error" className="error">{errors.title}</p>}
           </div>
           <div>
             <label htmlFor="book-creator">Creator:</label>
             <input
-                id="book-creator"   
+                id="book-creator"  
+                aria-describedby={errors.creator ? "creator-error" : undefined} 
+                aria-invalid={!!errors.creator}
                 value={creator}
                 onChange={(e) => setCreator(e.target.value)}
             />
-            {errors.creator && <p className="error">{errors.creator}</p>}   
+            {errors.creator && <p id="creator-error" className="error">{errors.creator}</p>}   
           </div>
             <button type="submit">Add Book</button>
         </form>
