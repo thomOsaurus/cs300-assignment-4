@@ -6,7 +6,7 @@ Course:CS300-- Client-Side Web Development
 
 Assignment 4: React Component Collection
 
-Scenerio: Reading List 
+Scenario: Reading List 
 ==============================================
 
 PROJECT DESCRIPTION:
